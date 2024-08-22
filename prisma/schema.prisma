@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ORGs {
+  id              String   @id @default(uuid()) @db.Uuid
+  email           String   @unique
+  name            String
+  password        String
+  address         String
+  city            String
+  state           String
+  zipcode         String
+  whatsapp_number String
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+
+  pets     Pets[]
+  Sessions Sessions[]
+
+  @@map("orgs")
+}
+
+model Pets {
+  id          String      @id @default(uuid()) @db.Uuid
+  name        String
+  age         Int
+  species     String
+  breed       String
+  size        String
+  gender      String
+  description String?
+  available   Boolean     @default(true)
+  created_at  DateTime    @default(now())
+  updated_at  DateTime    @updatedAt
+  orgId       String      @db.Uuid
+  petImages   PetImages[]
+
+  org_id ORGs @relation(fields: [orgId], references: [id])
+}
+
+model PetImages {
+  id         String   @id @default(uuid()) @db.Uuid
+  file_key   String
+  created_at DateTime @default(now())
+
+  petId  String @db.Uuid
+  pet_id Pets   @relation(fields: [petId], references: [id])
+}
+
+model Sessions {
+  id         String   @id @default(uuid()) @db.Uuid
+  token      String
+  created_at DateTime @default(now())
+  expires_at DateTime
+
+  orgId  String @db.Uuid
+  org_id ORGs   @relation(fields: [orgId], references: [id])
+}
