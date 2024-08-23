@@ -4,6 +4,7 @@ import { Prisma } from '@prisma/client';
 import Fastify, { FastifyError, FastifyReply, FastifyRequest } from 'fastify';
 import { env } from 'src/config/env';
 import { AppError } from 'src/shared/errors/AppError';
+import { ZodError } from 'zod';
 import { appRoutes } from './routes';
 
 export const fastify = Fastify();
@@ -27,6 +28,13 @@ fastify.setErrorHandler((err: FastifyError, request: FastifyRequest, reply: Fast
   }
 
   console.log(err);
+
+  if (err instanceof ZodError) {
+    return reply.status(400).send({
+      status: 'error',
+      message: err.issues
+    });
+  }
 
   if (err instanceof Prisma.PrismaClientKnownRequestError) {
     return reply.status(404).send({
