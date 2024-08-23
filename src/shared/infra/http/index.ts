@@ -26,6 +26,8 @@ fastify.setErrorHandler((err: FastifyError, request: FastifyRequest, reply: Fast
     });
   }
 
+  console.log(err);
+
   if (err instanceof Prisma.PrismaClientKnownRequestError) {
     return reply.status(404).send({
       status: 'error',

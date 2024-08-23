@@ -13,7 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model ORGs {
+model Orgs {
   id              String   @id @default(uuid()) @db.Uuid
   email           String   @unique
   name            String
@@ -47,7 +47,7 @@ model Pets {
   orgId       String      @db.Uuid
   petImages   PetImages[]
 
-  org_id ORGs @relation(fields: [orgId], references: [id])
+  org_id Orgs @relation(fields: [orgId], references: [id])
 }
 
 model PetImages {
@@ -66,5 +66,5 @@ model Sessions {
   expires_at DateTime
 
   orgId  String @db.Uuid
-  org_id ORGs   @relation(fields: [orgId], references: [id])
+  org_id Orgs   @relation(fields: [orgId], references: [id])
 }
