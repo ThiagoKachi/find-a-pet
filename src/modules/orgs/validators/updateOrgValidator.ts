@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { IUpdateOrg } from '../domain/models/IUpdateOrg';
 
-const createUserSchema = z.object({
+const updateOrgSchema = z.object({
   email: z.string().email().optional(),
   name: z.string().optional(),
   address: z.string().optional(),
@@ -13,6 +13,6 @@ const createUserSchema = z.object({
 
 export class UpdateOrgValidator {
   validate(data: IUpdateOrg) {
-    return createUserSchema.parse(data);
+    return updateOrgSchema.parse(data);
   }
 }

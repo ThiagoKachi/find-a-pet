@@ -77,7 +77,7 @@ export class OrgsRepository implements IOrgsRepository {
   public async remove(id: string): Promise<void> {
     await this.prismaClient.orgs.delete({
       where: {
-        id,
+        id
       },
     });
   }

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { ICreateOrg } from '../domain/models/ICreateOrg';
 
-const createUserSchema = z.object({
+const createOrgSchema = z.object({
   email: z.string().email(),
   name: z.string().min(1),
   password: z.string().min(6),
@@ -14,6 +14,6 @@ const createUserSchema = z.object({
 
 export class CreateOrgValidator {
   validate(data: ICreateOrg) {
-    return createUserSchema.parse(data);
+    return createOrgSchema.parse(data);
   }
 }
