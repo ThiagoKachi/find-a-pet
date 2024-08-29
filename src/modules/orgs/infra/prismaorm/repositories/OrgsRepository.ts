@@ -24,6 +24,9 @@ export class OrgsRepository implements IOrgsRepository {
           mode: 'insensitive',
         },
       },
+      include: {
+        pets: true,
+      }
     });
 
     return orgs;
@@ -34,6 +37,9 @@ export class OrgsRepository implements IOrgsRepository {
       where: {
         id,
       },
+      include: {
+        pets: true,
+      }
     });
 
     return org;

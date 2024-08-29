@@ -1,7 +1,11 @@
 import FastifyCORS from '@fastify/cors';
+import helmet from '@fastify/helmet';
 import FastifyJWT from '@fastify/jwt';
+import rateLimit from '@fastify/rate-limit';
 import { Prisma } from '@prisma/client';
 import Fastify, { FastifyError, FastifyReply, FastifyRequest } from 'fastify';
+import { Redis } from 'ioredis';
+import redisConfig from 'src/config/cache';
 import { env } from 'src/config/env';
 import { AppError } from 'src/shared/errors/AppError';
 import { ZodError } from 'zod';
@@ -9,12 +13,24 @@ import { appRoutes } from './routes';
 
 export const fastify = Fastify();
 
+fastify.register(helmet, { global: true });
 fastify.register(FastifyCORS);
 fastify.register(FastifyJWT, {
   secret: env.JWT_SECRET,
   sign: {
     expiresIn: '1d'
   }
+});
+
+fastify.register(rateLimit, {
+  global: true,
+  max: 100,
+  redis: new Redis(
+    redisConfig.config.redis,
+  ),
+  errorResponseBuilder: () => {
+    throw new AppError('Too many requests', 429);
+  },
 });
 
 fastify.register(appRoutes);

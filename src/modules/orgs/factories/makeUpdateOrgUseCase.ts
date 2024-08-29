@@ -6,7 +6,7 @@ import { UpdateOrgValidator } from '../validators/updateOrgValidator';
 export function makeUpdateOrgUseCase() {
   const orgsRepository = new OrgsRepository();
   const updateOrgValidator = new UpdateOrgValidator();
-  const createOrgUseCase = new UpdateOrgUseCase(orgsRepository, updateOrgValidator);
+  const updateOrgUseCase = new UpdateOrgUseCase(orgsRepository, updateOrgValidator);
 
-  return createOrgUseCase;
+  return updateOrgUseCase;
 }

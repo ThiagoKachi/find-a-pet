@@ -1,6 +1,6 @@
 import { orgsRoutes } from 'src/modules/orgs/infra/http/routes/orgs.routes';
 import { sessionsRoutes } from 'src/modules/orgs/infra/http/routes/sessions.routes';
-import { petsRoutes } from 'src/modules/pets/infra/http/routes';
+import { petsRoutes } from 'src/modules/pets/infra/http/routes/pets.routes';
 import { fastify } from '../index';
 
 export async function appRoutes() {
