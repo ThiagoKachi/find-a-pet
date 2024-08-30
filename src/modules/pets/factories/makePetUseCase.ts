@@ -1,5 +1,6 @@
 
 import { PetsController } from '../infra/http/controllers/PetsController';
+import { makeAdoptPetFormUseCase } from './makeAdoptPetFormUseCase';
 import { makeCreatePetUseCase } from './makeCreatePetUseCase';
 import { makeDeletePetUseCase } from './makeDeletePetUseCase';
 import { makeListPetsUseCase } from './makeListPetsUseCase';
@@ -12,6 +13,7 @@ export function makePetUseCase() {
   const createPetUseCase = makeCreatePetUseCase();
   const updatePetUseCase = makeUpdatePetUseCase();
   const deletePetUseCase = makeDeletePetUseCase();
+  const adoptPetFormUseCase = makeAdoptPetFormUseCase();
 
   return new PetsController(
     listPetsUseCase,
@@ -19,5 +21,6 @@ export function makePetUseCase() {
     createPetUseCase,
     updatePetUseCase,
     deletePetUseCase,
+    adoptPetFormUseCase
   );
 }

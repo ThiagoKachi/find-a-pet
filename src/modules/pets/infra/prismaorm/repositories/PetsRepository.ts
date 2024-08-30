@@ -20,7 +20,7 @@ export class PetsRepository implements IPetsRepository {
   }: PetsListParams): Promise<IPet[]> {
     const pets = await this.prismaClient.pets.findMany({
       include: {
-        petImages: true
+        petImages: true,
       },
       where: {
         ...(age && {
@@ -37,14 +37,19 @@ export class PetsRepository implements IPetsRepository {
     return pets;
   }
 
-  public async findById(id: string): Promise<IPet | null> {
+  public async findById(id: string): Promise<IPet & { org_id: { email: string } } | null> {
     const pet = await this.prismaClient.pets.findFirst({
       where: {
         id,
       },
       include: {
-        petImages: true
-      }
+        petImages: true,
+        org_id: {
+          select: {
+            email: true
+          }
+        }
+      },
     });
 
     return pet;
@@ -88,5 +93,4 @@ export class PetsRepository implements IPetsRepository {
       },
     });
   }
-
 }

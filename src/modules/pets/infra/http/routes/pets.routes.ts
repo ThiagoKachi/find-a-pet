@@ -7,6 +7,7 @@ const petsUseCases = makePetUseCase();
 export async function petsRoutes(fastify: FastifyInstance) {
   fastify.get('/', async (req, res) => petsUseCases.index(req, res));
   fastify.get('/:id', async (req, res) => petsUseCases.show(req, res));
+  fastify.post('/adopt', async (req, res) => petsUseCases.adoptPetForm(req, res));
 
   fastify.post(
     '/',

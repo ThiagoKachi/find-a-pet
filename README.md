@@ -6,18 +6,16 @@
 - [x] - Deve ser possível se cadastrar como uma ORG.
 - [x] - Deve ser possível realizar login como uma ORG.
 - [x] - **Autenticação JWT** deve ser usada para acessar rotas que requerem autenticação.
-- [] - **Filas** devem ser usadas para o envio de Emails/WhatsApp quando um usuário deseja entrar em contato com uma ORG.
 - [x] - **Cache** deve ser implementado para melhorar a performance da listagem de pets e dos filtros.
 
 ### Regras de Negócio
 
 - [x] - Uma ORG precisa ter um endereço e um número de WhatsApp.
 - [x] - Um pet deve estar ligado a uma ORG.
-- [] - O usuário que quer adotar, entrará em contato com a ORG via WhatsApp ou Email.
+- [x] - O usuário que quer adotar, entrará em contato com a ORG via Email.
 - [x] - Todos os filtros do pet, são opcionais.
 - [x] - Para uma ORG acessar a aplicação como admin, ela precisa estar logada.
 - [x] - **Roles e Permissions**: Apenas ORGs autenticadas podem cadastrar ou remover pets.
-- [] - **Filas** devem ser usadas para processamento assíncrono de tarefas, como envio de notificações.
 - [x] - **Cache** deve ser utilizado para armazenar dados frequentemente acessados, como listagens de pets e tokens de autenticação.
 
 ## Ferramentas
@@ -31,3 +29,8 @@
 - Docker
 - Email - Resend
 - Armazenamento - S3
+
+## Falta fazer
+
+- Cadastro de imagens dos pets
+  - Nova rota para adicionar imagens

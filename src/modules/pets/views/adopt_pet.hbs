@@ -1,0 +1,30 @@
+<style>
+  .message-content  {
+    font-family: sans-serif;
+    max-width: 600px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+</style>
+
+<div class="message-content" style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
+  <p>Olá, {{orgName}}</p>
+  <p>Recebemos uma nova solicitação de adoção de pet.</p>
+  <p>A pessoa abaixo demonstrou interesse em adotar um dos seus pets: <strong>{{pet_name}}</strong> 🎊🐾❤️</p>
+  <p><strong>Nome:</strong> {{name}}</p>
+  <p><strong>Email:</strong> {{email}}</p>
+  <p><strong>Telefone:</strong> {{phone}}</p>
+  <p><strong>Endereço:</strong> {{address}}, {{city}}, {{state}}, {{zipcode}}</p>
+
+  {{#if instagramURL}}
+  <p><strong>Instagram:</strong> <a href="{{instagramURL}}" style="color: #1e90ff;">{{instagramURL}}</a></p>
+  {{/if}}
+
+  <br />
+  <p>Entre em contato com o interessado para mais informações ou para seguir com o processo de adoção.</p>
+  <br />
+  <p>Obrigado!</p>
+  <p>Equipe FindAFriend</p>
+</div>
+
+

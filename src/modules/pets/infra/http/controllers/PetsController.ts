@@ -1,8 +1,10 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { ICreatePet } from 'src/modules/pets/domain/models/ICreatePet';
 import { IPet } from 'src/modules/pets/domain/models/IPet';
+import { IRequestAdoption } from 'src/modules/pets/domain/models/IRequestAdoption';
 import { IUpdatePet } from 'src/modules/pets/domain/models/IUpdatePet';
 import { PetsListParams } from 'src/modules/pets/domain/repositories/IPetsRepository';
+import { AdoptPetFormUseCase } from 'src/modules/pets/useCases/AdoptPetFormUseCase';
 import { CreatePetUseCase } from 'src/modules/pets/useCases/CreatePetUseCase';
 import { DeletePetUseCase } from 'src/modules/pets/useCases/DeletePetUseCase';
 import { ListPetsUseCase } from 'src/modules/pets/useCases/ListPetsUseCase copy';
@@ -16,6 +18,7 @@ export class PetsController {
     private createPetUseCase: CreatePetUseCase,
     private updatePetUseCase: UpdatePetUseCase,
     private deletePetUseCase: DeletePetUseCase,
+    private adoptPetFormUseCase: AdoptPetFormUseCase,
   ) {}
 
   public async show(request: FastifyRequest, reply: FastifyReply): Promise<IPet | null> {
@@ -63,6 +66,14 @@ export class PetsController {
     const orgId = request.orgId as string;
 
     await this.deletePetUseCase.execute(id, orgId);
+
+    return reply.status(204).send();
+  }
+
+  public async adoptPetForm(request: FastifyRequest, reply: FastifyReply): Promise<void> {
+    const body = request.body as IRequestAdoption;
+
+    await this.adoptPetFormUseCase.execute(body);
 
     return reply.status(204).send();
   }
