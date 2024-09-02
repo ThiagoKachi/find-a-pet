@@ -2,6 +2,7 @@
   "name": "findafriend-api",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "src/shared/infra/http/server.ts",
   "scripts": {
     "build": "tsc",

@@ -30,6 +30,3 @@
 - Armazenamento > S3
 
 ## Falta fazer
-
-- Cadastro de imagens dos pets
-  - Nova rota para remover imagens?
