@@ -1,7 +1,7 @@
 
 import { RedisCache } from 'src/shared/cache/RedisCache';
 import { PetsRepository } from '../infra/prismaorm/repositories/PetsRepository';
-import { ListPetsUseCase } from '../useCases/ListPetsUseCase copy';
+import { ListPetsUseCase } from '../useCases/ListPetsUseCase';
 
 export function makeListPetsUseCase() {
   const petsRepository = new PetsRepository();

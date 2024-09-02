@@ -20,8 +20,8 @@ export class DeletePetUseCase {
       throw new AppError('Not authorized', 401);
     }
 
-    await this.redisCache.invalidate(redisKey.FAF_API_PETS_LIST);
-
     await this.petsRepository.remove(id);
+
+    await this.redisCache.invalidate(redisKey.FAF_API_PETS_LIST);
   }
 }

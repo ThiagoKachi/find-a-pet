@@ -1,6 +1,7 @@
 import FastifyCORS from '@fastify/cors';
 import helmet from '@fastify/helmet';
 import FastifyJWT from '@fastify/jwt';
+import fastifyMultipart from '@fastify/multipart';
 import rateLimit from '@fastify/rate-limit';
 import { Prisma } from '@prisma/client';
 import Fastify, { FastifyError, FastifyReply, FastifyRequest } from 'fastify';
@@ -14,6 +15,7 @@ import { appRoutes } from './routes';
 export const fastify = Fastify();
 
 fastify.register(helmet, { global: true });
+fastify.register(fastifyMultipart);
 fastify.register(FastifyCORS);
 fastify.register(FastifyJWT, {
   secret: env.JWT_SECRET,

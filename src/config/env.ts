@@ -1,3 +1,7 @@
 export const env = {
   JWT_SECRET: process.env.JWT_SECRET!,
+  AWS_BUCKET_NAME: process.env.AWS_BUCKET_NAME!,
+  AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY!,
+  AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID!,
+  CLOUDFLARE_ACCOUNT_ID: process.env.CLOUDFLARE_ACCOUNT_ID!,
 };

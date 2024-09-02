@@ -4,3 +4,8 @@ export interface IPetsImages {
   created_at: Date;
   petId: string;
 }
+
+export interface IPetsImagesResponse {
+  id: string;
+  file_key: string;
+}

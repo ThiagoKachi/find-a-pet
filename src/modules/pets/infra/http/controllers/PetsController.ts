@@ -7,7 +7,7 @@ import { PetsListParams } from 'src/modules/pets/domain/repositories/IPetsReposi
 import { AdoptPetFormUseCase } from 'src/modules/pets/useCases/AdoptPetFormUseCase';
 import { CreatePetUseCase } from 'src/modules/pets/useCases/CreatePetUseCase';
 import { DeletePetUseCase } from 'src/modules/pets/useCases/DeletePetUseCase';
-import { ListPetsUseCase } from 'src/modules/pets/useCases/ListPetsUseCase copy';
+import { ListPetsUseCase } from 'src/modules/pets/useCases/ListPetsUseCase';
 import { ShowPetUseCase } from 'src/modules/pets/useCases/ShowPetUseCase';
 import { UpdatePetUseCase } from 'src/modules/pets/useCases/UpdatePetUseCase';
 

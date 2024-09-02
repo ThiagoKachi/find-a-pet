@@ -1,4 +1,4 @@
-import { IPetsImages } from './IPetsImages';
+import { IPetsImagesResponse } from './IPetsImages';
 
 export interface IPet {
   id: string;
@@ -13,5 +13,5 @@ export interface IPet {
   created_at: Date;
   updated_at: Date;
   orgId: string;
-  petImages?: IPetsImages[];
+  petImages?: IPetsImagesResponse[];
 }

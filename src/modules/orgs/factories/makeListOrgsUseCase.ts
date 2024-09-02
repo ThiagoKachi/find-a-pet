@@ -1,6 +1,6 @@
 
 import { OrgsRepository } from '../infra/prismaorm/repositories/OrgsRepository';
-import { ListOrgsUseCase } from '../useCases/ListOrgsUseCase copy';
+import { ListOrgsUseCase } from '../useCases/ListOrgsUseCase';
 
 export function makeListOrgsUseCase() {
   const orgsRepository = new OrgsRepository();

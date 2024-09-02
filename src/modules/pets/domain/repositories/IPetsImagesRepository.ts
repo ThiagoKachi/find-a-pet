@@ -1,8 +1,5 @@
-import { ICreatePet } from '../models/ICreatePet';
-import { IPet } from '../models/IPet';
+import { IPetsImages } from '../models/IPetsImages';
 
 export interface IPetsImagesRepository {
-  create(data: ICreatePet): Promise<IPet>;
-  update(id: string, data: ICreatePet): Promise<IPet>;
-  remove(id: string): Promise<void>;
+  create(petId: string, file_key: string): Promise<IPetsImages>;
 }

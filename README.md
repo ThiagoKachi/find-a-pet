@@ -21,16 +21,15 @@
 ## Ferramentas
 
 - Node > Fastify
-- Postgres > Prisma ORM
+- Postgres > Prisma ORM > Knexjs
 - Autenticação > jsonwebtoken
-- Filas > Bull
-- Cache > Redis | NodeCache
+- Cache > Redis
 - Validações > Zod
 - Docker
-- Email - Resend
-- Armazenamento - S3
+- Email > Resend
+- Armazenamento > S3
 
 ## Falta fazer
 
 - Cadastro de imagens dos pets
-  - Nova rota para adicionar imagens
+  - Nova rota para remover imagens?

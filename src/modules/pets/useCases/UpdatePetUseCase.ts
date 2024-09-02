@@ -25,9 +25,9 @@ export class UpdatePetUseCase {
 
     const validatedData = this.validator.validate(data);
 
-    await this.redisCache.invalidate(redisKey.FAF_API_PETS_LIST);
-
     const updatedPet = await this.petsRepository.update(id, validatedData);
+
+    await this.redisCache.invalidate(redisKey.FAF_API_PETS_LIST);
 
     return updatedPet;
   }

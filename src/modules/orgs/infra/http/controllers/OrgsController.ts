@@ -4,7 +4,7 @@ import { IOrg } from 'src/modules/orgs/domain/models/IOrg';
 import { ListParams } from 'src/modules/orgs/domain/repositories/IOrgsRepository';
 import { CreateOrgUseCase } from 'src/modules/orgs/useCases/CreateOrgUseCase';
 import { DeleteOrgUseCase } from 'src/modules/orgs/useCases/DeleteOrgUseCase';
-import { ListOrgsUseCase } from 'src/modules/orgs/useCases/ListOrgsUseCase copy';
+import { ListOrgsUseCase } from 'src/modules/orgs/useCases/ListOrgsUseCase';
 import { ShowOrgUseCase } from 'src/modules/orgs/useCases/ShowOrgUseCase';
 import { UpdateOrgUseCase } from 'src/modules/orgs/useCases/UpdateOrgUseCase';
 

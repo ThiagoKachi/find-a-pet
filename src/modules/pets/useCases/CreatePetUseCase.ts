@@ -15,9 +15,9 @@ export class CreatePetUseCase {
   public async execute(orgId: string, data: ICreatePet): Promise<IPet> {
     const validatedData = this.validator.validate(data);
 
-    await this.redisCache.invalidate(redisKey.FAF_API_PETS_LIST);
-
     const pet = await this.petsRepository.create(orgId, validatedData);
+
+    await this.redisCache.invalidate(redisKey.FAF_API_PETS_LIST);
 
     return pet;
   }
