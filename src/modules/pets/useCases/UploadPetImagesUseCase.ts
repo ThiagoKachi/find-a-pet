@@ -17,6 +17,12 @@ export class UploadPetImagesUseCase {
       throw new AppError('File name, file type and body are required');
     }
 
+    const petImageExists = await this.petImagesRepository.findByFileName(fileName);
+
+    if (petImageExists) {
+      throw new AppError('Pet image already exists');
+    }
+
     const { url } = await this.uploader.upload({ fileName, fileType, body });
 
     const petImage = await this.petImagesRepository.create(petId, url);
