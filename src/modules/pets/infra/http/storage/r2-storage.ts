@@ -1,4 +1,4 @@
-import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import { DeleteObjectCommand, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { randomUUID } from 'node:crypto';
 import { env } from 'src/config/env';
 import { PetImagesUploadParams } from 'src/modules/pets/domain/models/IPetImagesUpload';
@@ -37,5 +37,14 @@ export class R2Storage {
     );
 
     return { url: uniqueFileName };
+  }
+
+  public async delete(fileName: string): Promise<void> {
+    await this.client.send(
+      new DeleteObjectCommand({
+        Bucket: env.AWS_BUCKET_NAME,
+        Key: fileName,
+      })
+    );
   }
 }
