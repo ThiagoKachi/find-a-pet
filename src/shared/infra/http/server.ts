@@ -1,5 +1,7 @@
 import { fastify } from '.';
 
-fastify.listen({ port: 3333 }, () => {
-  console.log('🚀 Server running on port 3333');
+const port = Number(process.env.PORT) || 3333;
+
+fastify.listen({ port }, () => {
+  console.log(`🚀 Server running on port ${port}`);
 });
