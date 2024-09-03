@@ -5,9 +5,12 @@ import { deleteKeysByPrefix } from './deleteRedisKey';
 export class RedisCache {
   private client!: RedisClient;
   private connected = false;
+  private useRedis: boolean;
 
   constructor() {
-    if (!this.connected) {
+    this.useRedis = process.env.USE_REDIS === 'true';
+
+    if (this.useRedis && !this.connected) {
       this.client = new Redis(cacheConfig.config.redis);
       this.connected = true;
     }
