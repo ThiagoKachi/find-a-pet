@@ -1,5 +1,7 @@
 import { RedisOptions } from 'ioredis';
 
+const tlsOptions = process.env.NODE_ENV === 'prod' ? { rejectUnauthorized: true } : undefined;
+
 interface ICacheConfig {
   config: {
     redis: RedisOptions;
@@ -14,9 +16,7 @@ export default {
       port: process.env.REDIS_PORT,
       password: process.env.REDIS_PASS || undefined,
       username: process.env.REDIS_USERNAME || undefined,
-      tls: {
-        rejectUnauthorized: false
-      }
+      ...(tlsOptions && { tls: tlsOptions }),
     }
   },
   driver: 'redis',
