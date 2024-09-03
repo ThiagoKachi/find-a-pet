@@ -1,4 +1,3 @@
-
 import { PrismaClient } from '@prisma/client';
 import { IUpdateOrg } from 'src/modules/orgs/domain/models/IUpdateOrg';
 import { ICreateOrg } from '../../../domain/models/ICreateOrg';

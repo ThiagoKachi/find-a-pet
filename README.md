@@ -27,6 +27,6 @@
 - Validações > Zod
 - Docker
 - Email > Resend
-- Armazenamento > S3
+- Armazenamento > R2
 
 ## Falta fazer

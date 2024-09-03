@@ -1,4 +1,3 @@
-
 import { PrismaClient } from '@prisma/client';
 import { IPetsImages } from 'src/modules/pets/domain/models/IPetsImages';
 import { IPetsImagesRepository } from 'src/modules/pets/domain/repositories/IPetsImagesRepository';

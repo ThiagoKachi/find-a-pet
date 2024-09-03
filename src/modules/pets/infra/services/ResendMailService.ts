@@ -1,4 +1,3 @@
-
 import { Resend } from 'resend';
 import HandlebarsMailTemplate from 'src/config/HandlebarsMailTemplate';
 import mail from 'src/config/mail';

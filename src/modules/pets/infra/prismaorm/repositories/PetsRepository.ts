@@ -1,4 +1,3 @@
-
 import { PrismaClient } from '@prisma/client';
 import { ICreatePet } from 'src/modules/pets/domain/models/ICreatePet';
 import { IPet } from 'src/modules/pets/domain/models/IPet';

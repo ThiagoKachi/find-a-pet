@@ -1,4 +1,3 @@
-
 import { PrismaClient } from '@prisma/client';
 import { ICreateSession } from 'src/modules/orgs/domain/models/ICreateSession';
 import { ISession } from 'src/modules/orgs/domain/models/ISession';
