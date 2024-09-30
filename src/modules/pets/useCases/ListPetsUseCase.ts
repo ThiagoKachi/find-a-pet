@@ -31,7 +31,7 @@ export class ListPetsUseCase {
     }
 
     return {
-      pets: pets.pets,
+      pets: pets.pets || [],
       currentPage: Number(page),
       pageSize: Number(limit),
       total: Number(pets.total) || 0
