@@ -14,15 +14,19 @@ export class PetImagesController {
     const { id } = request.params as { id: string };
     const data = await parseMultipartData(request, reply);
 
+    const petImages = [];
+
     for (const file of data) {
-      await this.uploadPetImagesUseCase.execute(id, {
+      const url = await this.uploadPetImagesUseCase.execute(id, {
         fileName: file.fileName,
         fileType: file.fileType,
         body: file.body,
       });
+
+      petImages.push(url);
     }
 
-    return reply.status(201).send({ message: 'Images uploaded successfully' });
+    return reply.status(201).send({ message: 'Images uploaded successfully', petImages });
   }
 
   public async delete(request: FastifyRequest, reply: FastifyReply): Promise<void> {

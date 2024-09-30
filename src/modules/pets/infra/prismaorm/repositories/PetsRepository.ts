@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import { ICreatePet } from 'src/modules/pets/domain/models/ICreatePet';
 import { IPet } from 'src/modules/pets/domain/models/IPet';
+import { IPetResponse } from 'src/modules/pets/domain/models/IPetResponse';
 import { IUpdatePet } from 'src/modules/pets/domain/models/IUpdatePet';
 import { IPetsRepository, PetsListParams } from 'src/modules/pets/domain/repositories/IPetsRepository';
 
@@ -15,8 +16,10 @@ export class PetsRepository implements IPetsRepository {
     age,
     gender,
     size,
-    species
-  }: PetsListParams): Promise<IPet[]> {
+    species,
+    limit,
+    page
+  }: PetsListParams): Promise<IPetResponse> {
     const pets = await this.prismaClient.pets.findMany({
       include: {
         petImages: {
@@ -25,7 +28,30 @@ export class PetsRepository implements IPetsRepository {
             file_key: true
           }
         },
+        org_id: {
+          select: {
+            name: true
+          }
+        }
       },
+      where: {
+        ...(age && {
+          age: {
+            lte: age
+          },
+        }),
+        gender,
+        size,
+        species
+      },
+      orderBy: {
+        created_at: 'desc'
+      },
+      skip: (Number(page) - 1) * limit,
+      take: Number(limit),
+    });
+
+    const petsQtd = await this.prismaClient.pets.count({
       where: {
         ...(age && {
           age: {
@@ -38,7 +64,12 @@ export class PetsRepository implements IPetsRepository {
       }
     });
 
-    return pets;
+    return {
+      pets,
+      currentPage: Number(page),
+      pageSize: Number(limit),
+      total: petsQtd
+    };
   }
 
   public async findById(id: string): Promise<IPet & { org_id: { email: string } } | null> {
@@ -55,7 +86,11 @@ export class PetsRepository implements IPetsRepository {
         },
         org_id: {
           select: {
-            email: true
+            email: true,
+            name: true,
+            address: true,
+            city: true,
+            state: true,
           }
         }
       },

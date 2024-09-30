@@ -17,6 +17,6 @@ export class SessionsController {
 
     const session = await this.createSessionUseCase.execute({ orgId: org.id, token });
 
-    return reply.status(201).send(session);
+    return reply.status(201).send({ token: session.token, orgId: org.id });
   }
 }

@@ -30,3 +30,12 @@
 - Armazenamento > R2
 
 ## Falta fazer
+
+- [x] - Filtros 'city' e 'name' com insensitiveCase
+- [x] - Paginação na listagem de pets
+- [x] - Nome da ORG na listagem de pets
+- [x] - Detalhes do Canil no detalhe do pet
+- [x] - Imagens do pet no detalhe da org
+- [x] - Na API de login, retornar o ID da org
+- [x] - Setar Pet para indisponível na edição
+- [x] - Ao salvar imagem, retornar fileKey (URL)

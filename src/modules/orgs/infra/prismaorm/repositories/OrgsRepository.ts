@@ -37,7 +37,15 @@ export class OrgsRepository implements IOrgsRepository {
         id,
       },
       include: {
-        pets: true,
+        pets: {
+          select: {
+            petImages: {
+              take: 1,
+            },
+            name: true,
+            id: true,
+          }
+        },
       }
     });
 
