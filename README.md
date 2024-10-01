@@ -39,3 +39,4 @@
 - [x] - Na API de login, retornar o ID da org
 - [x] - Setar Pet para indisponível na edição
 - [x] - Ao salvar imagem, retornar fileKey (URL)
+- [x] - No detalhe da ORG, no array de PETS, retornar se esta available

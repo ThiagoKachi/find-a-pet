@@ -44,6 +44,7 @@ export class OrgsRepository implements IOrgsRepository {
             },
             name: true,
             id: true,
+            available: true,
           }
         },
       }
